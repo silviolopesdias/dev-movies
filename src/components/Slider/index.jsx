@@ -1,28 +1,30 @@
 import React from "react";
-import {Swiper, SwiperSlide} from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import PropTypes from 'prop-types'
 import { Container } from './styles'
+import Card from "../Card";
+
 
 function Slider({ info, title }) {
-    console.log(info, title)
+ 
 
     return (
         <Container>
             <h2>{title}</h2>
-            <Swiper 
-            grabCursor={true}
-            spaceBetween={10}
-            slidesPerView={'auto'}
-            className="swiper"            
+            <Swiper
+                grabCursor={true}
+                spaceBetween={15}
+                slidesPerView={'auto'}
+                className="swiper"
             >
-                {info.map((item, index)=> (
+                {info.map((item, index) => (
 
                     <SwiperSlide key={index}>
-                        <div style={{color: "white"}}>{item.original_title}</div>
+                       <Card item={item}/>
                     </SwiperSlide>
 
                 ))}
-             
+
 
             </Swiper>
         </Container>
@@ -38,5 +40,5 @@ Slider.propTypes = {
 
 Slider.propTypes = {
     title: PropTypes.string
-    
+
 }
