@@ -1428,6 +1428,7 @@ __metadata:
     react-dom: ^18.3.1
     react-router-dom: ^6.24.1
     styled-components: ^6.1.11
+    swiper: ^11.1.5
     vite: ^5.3.1
   languageName: unknown
   linkType: soft
@@ -3801,6 +3802,13 @@ __metadata:
   version: 1.0.0
   resolution: "supports-preserve-symlinks-flag@npm:1.0.0"
   checksum: 53b1e247e68e05db7b3808b99b892bd36fb096e6fba213a06da7fab22045e97597db425c724f2bbd6c99a3c295e1e73f3e4de78592289f38431049e1277ca0ae
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^11.1.5":
+  version: 11.1.5
+  resolution: "swiper@npm:11.1.5"
+  checksum: e8523ba3d27549edb1c5a5a7a1d01e90363c643a57c08a1a445d34618bec9df3c63b416a61d4a238252bbedc2a8e4cd53dbd3414ebb6cb4ed76073c1781452fb
   languageName: node
   linkType: hard
 

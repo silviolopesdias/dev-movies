@@ -65,7 +65,7 @@ export const Info = styled.div`
 export const Poster =styled.div`
       z-index: 2;
 
-    img{
+    img {
 
       width: 400px;
       border-radius: 30px;    

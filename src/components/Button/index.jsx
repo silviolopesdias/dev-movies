@@ -23,6 +23,6 @@ Button.propTypes = {
 }
 
 Button.propTypes = {
-    red: PropTypes.string
+    red: PropTypes.bool
     
 }
