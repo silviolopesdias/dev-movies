@@ -5,9 +5,11 @@ import { Background, Info, Poster, Container, ContainerButtons } from "./styles"
 import Button from "../../components/Button"
 import Slider from "../../components/Slider"
 import { getImages } from '../../utils/getImages'
+import Modal from "../../components/Modal"
 
 
 function Home() {
+    const [showModal, setShowModal] = useState(false)
     const [movie, setMovie] = useState()
     const [topMovies, setTopMovies] = useState()
     const [topSeries, setTopSeries] = useState()
@@ -30,7 +32,6 @@ function Home() {
 
             setTopMovies(results)
 
-
         }
 
         async function getTopSeries() {
@@ -42,8 +43,6 @@ function Home() {
 
 
         }
-
-       
         async function getPopularSeries() {
 
             const { data: { results } } = await api.get('/tv/popular')
@@ -51,25 +50,21 @@ function Home() {
 
             setPopularSeries(results)
 
-
         }
+
         async function getTopPeoples() {
 
             const { data: { results } } = await api.get('/person/popular')
 
 
             setTopPeoples(results)
-
-
         }
-        
 
         getMovies()
         getTopMovies()
         getTopSeries()
         getPopularSeries()
         getTopPeoples()
-
 
     }, [])
 
@@ -79,13 +74,14 @@ function Home() {
             {movie && (
 
                 <Background img={getImages(movie.backdrop_path)}>
+                    {showModal && <Modal movieId={movie.id} setShowModal={setShowModal} />}
                     <Container>
                         <Info>
                             <h1>{movie.title}</h1>
                             <p>{movie.overview}</p>
                             <ContainerButtons>
                                 <Button red={true}>Assista Agora</Button>
-                                <Button red={false}>Assista o Trailer</Button>
+                                <Button onClick={()=> setShowModal(true)}>Assista o Trailer</Button>
                             </ContainerButtons>
                         </Info>
                         <Poster>

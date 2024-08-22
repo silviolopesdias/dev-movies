@@ -19,5 +19,5 @@ function Card({ item }) {
 export default Card
 
 Card.propTypes = {
-    item: PropTypes.string,
+    item: PropTypes.object,
 }
