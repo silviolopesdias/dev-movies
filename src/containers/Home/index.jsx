@@ -1,11 +1,13 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import api from "../../services/api"
+import { useNavigate } from "react-router-dom"
 import { Background, Info, Poster, Container, ContainerButtons } from "./styles"
 import Button from "../../components/Button"
 import Slider from "../../components/Slider"
 import { getImages } from '../../utils/getImages'
 import Modal from "../../components/Modal"
+import { getMovies, getPopularSeries, getTopMovies, getTopPeoples, getTopSeries } from "../../services/getData"
+
 
 
 function Home() {
@@ -15,56 +17,22 @@ function Home() {
     const [topSeries, setTopSeries] = useState()
     const [PopularSeries, setPopularSeries] = useState()
     const [topPeoples, setTopPeoples] = useState()
+    const navegate = useNavigate()
+
+
     useEffect(() => {
 
-        async function getMovies() {
+        async function getAllData() {
 
-            const { data: { results } } = await api.get('/movie/popular')
-
-            setMovie(results[1])
-
-        }
-
-        async function getTopMovies() {
-
-            const { data: { results } } = await api.get('/movie/top_rated')
-
-
-            setTopMovies(results)
+            setMovie(await getMovies())
+            setTopMovies(await getTopMovies())
+            setTopSeries(await getTopSeries())
+            setPopularSeries(await getPopularSeries())
+            setTopPeoples(await getTopPeoples())
 
         }
 
-        async function getTopSeries() {
-
-            const { data: { results } } = await api.get('/tv/top_rated')
-
-
-            setTopSeries(results)
-
-
-        }
-        async function getPopularSeries() {
-
-            const { data: { results } } = await api.get('/tv/popular')
-
-
-            setPopularSeries(results)
-
-        }
-
-        async function getTopPeoples() {
-
-            const { data: { results } } = await api.get('/person/popular')
-
-
-            setTopPeoples(results)
-        }
-
-        getMovies()
-        getTopMovies()
-        getTopSeries()
-        getPopularSeries()
-        getTopPeoples()
+    getAllData()
 
     }, [])
 
@@ -80,8 +48,8 @@ function Home() {
                             <h1>{movie.title}</h1>
                             <p>{movie.overview}</p>
                             <ContainerButtons>
-                                <Button red={true}>Assista Agora</Button>
-                                <Button onClick={()=> setShowModal(true)}>Assista o Trailer</Button>
+                                <Button red={true} onClick={() => navegate(`/detalhe/${movie.id}`)}>Assista Agora</Button>
+                                <Button onClick={() => setShowModal(true)}>Assista o Trailer</Button>
                             </ContainerButtons>
                         </Info>
                         <Poster>
