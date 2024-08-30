@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types'
 import { Container, Background } from './styles'
-import { getMovie } from '../../services/getData.js'
+import { getMovieModal } from '../../services/getData.js'
 
 
 function Modal({ movieId, setShowModal }) {
@@ -11,7 +11,7 @@ function Modal({ movieId, setShowModal }) {
     useEffect(() => {
         async function getMovies() {
 
-            setMovie(await getMovie(movieId))
+            setMovie(await getMovieModal(movieId))
 
         }
         getMovies()

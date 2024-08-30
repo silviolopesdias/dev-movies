@@ -24,11 +24,24 @@ function Home() {
 
         async function getAllData() {
 
-            setMovie(await getMovies())
-            setTopMovies(await getTopMovies())
-            setTopSeries(await getTopSeries())
-            setPopularSeries(await getPopularSeries())
-            setTopPeoples(await getTopPeoples())
+            Promise.all([
+                getMovies(),
+                getTopMovies(),
+                getTopSeries(),
+                getPopularSeries(),
+                getTopPeoples()
+            ])
+            .then(([movie, topMovies, topSeries, popularSeries, topPeople]) => {
+
+            setMovie(movie)
+            setTopMovies(topMovies)
+            setTopSeries(topSeries)
+            setPopularSeries(popularSeries)
+            setTopPeoples(topPeople)
+
+            })
+            .catch((error) => console.error(error))
+         
 
         }
 
