@@ -7,6 +7,7 @@ export async function getMovies() {
      return results[0]
 
 }
+
 export async function getTopMovies() {
     const { data: { results } } =
      await api.get('/movie/top_rated')
@@ -25,6 +26,8 @@ export async function getPopularSeries() {
      return results
 
 }
+
+
 export async function getTopPeoples() {
     const { data: { results } } =
      await api.get('/person/popular')
@@ -36,11 +39,6 @@ export async function getMovieVideos(movieId) {
     const { data: { results } } = 
     await api.get(`/movie/${movieId}/videos`)
     return results
-}
-export async function getMovieModal(movieId) {
-    const { data: { results } } = 
-    await api.get(`/movie/${movieId}/videos`)
-    return results[0]
 }
 
 export async function getMovieCredits(movieId) {

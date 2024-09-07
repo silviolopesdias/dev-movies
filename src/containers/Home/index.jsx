@@ -21,6 +21,7 @@ function Home() {
 
 
     useEffect(() => {
+        
 
         async function getAllData() {
 
@@ -32,7 +33,7 @@ function Home() {
                 getTopPeoples()
             ])
             .then(([movie, topMovies, topSeries, popularSeries, topPeople]) => {
-
+              
             setMovie(movie)
             setTopMovies(topMovies)
             setTopSeries(topSeries)
